@@ -13,11 +13,13 @@ class ITunesParser():
     print "XML ROOT ATTRIBUTES: "
     print self.root.attrib
 
-    self.keys = self.root[0].findall('key')
-    for key in self.keys:
-      if key.text == 'Tracks':
-        self.tracks = key
+    keys = self.root.find('dict')
 
-    print self.tracks.text
+    tracklist = keys.find('dict')
+
+    count = 0
+    for track in tracklist:
+        print track.text
+    
 
 parser = ITunesParser()
